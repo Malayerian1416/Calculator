@@ -37,7 +37,6 @@ const app = createApp({
             download: reactive({"name": "", "file": ""}),
             FileBrowserType: ref(null),
             ExcelSeatTable: ref(null),
-            timeUnit: ref(60),
             development: {
                 "land_use": "",
                 "area": 0,
@@ -45,6 +44,7 @@ const app = createApp({
                 "impervious": 0
             },
             TablesData: ref({
+                "timeUnit": 60,
                 "PreDevelopment": [{
                     "land_use": "",
                     "area": 0,
@@ -641,7 +641,7 @@ const app = createApp({
                         self.TablesData.StorageTable[key].Sv = 0;
                 }
             });
-            let max = 0;let i = 1;
+            let max = 0;
             Object.keys(self.TablesData.StorageTable).forEach(key => {
                 if (!isNaN(self.TablesData.StorageTable[key].Sv) && parseFloat(self.TablesData.StorageTable[key].Sv) > max)
                     max = self.TablesData.StorageTable[key].Sv;
