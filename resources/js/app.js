@@ -645,11 +645,7 @@ const app = createApp({
             Object.keys(self.TablesData.StorageTable).forEach(key => {
                 if (!isNaN(self.TablesData.StorageTable[key].Sv) && parseFloat(self.TablesData.StorageTable[key].Sv) > max)
                     max = self.TablesData.StorageTable[key].Sv;
-                ++i;
-                if (i === Object.keys(self.TablesData.StorageTable).length){
-                    self.TablesData.MaxStorage = max;
-                    return max;
-                }
+                self.TablesData.MaxStorage = max;
             });
         });
     },
