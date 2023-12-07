@@ -44,7 +44,7 @@ const app = createApp({
                 "impervious": 0
             },
             TablesData: ref({
-                "timeUnit": 60,
+                "timeUnit": "60",
                 "PreDevelopment": [{
                     "land_use": "",
                     "area": 0,
