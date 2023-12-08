@@ -10,7 +10,10 @@
     @vite(['resources/sass/app.scss','resources/css/app.css'])
 </head>
 <body class="antialiased">
-<div id="app" class="main pb-5 bg-dark">
+<div id="app" class="main pb-5 bg-dark position-relative">
+    <div v-if="loading" class="position-absolute d-flex align-items-center justify-content-center h-100 w-100 bg-dark bg-opacity-50 top-0" style="left: 0;z-index: 5000">
+        <i class="fa fa-spinner fa-spin fa-2x text-white"></i>
+    </div>
     <input type="file" hidden id="FileBrowser" accept=".xls,.xlsx" v-on:change="UploadExcelFile">
     <a id="DownloadResult" hidden :href="download.file" :download="download.name"></a>
     <div class="container pt-2">
@@ -1003,8 +1006,8 @@
                     <h1 class="modal-title fs-5">Save current data</h1>
                 </div>
                 <div class="modal-body">
-                    <div v-if="loading" class="position-absolute d-flex align-items-center justify-content-center h-100 w-100 bg-opacity-75 bg-dark top-0" style="left: 0">
-                        <i class="fa fa-spinner fa-spin fa-2x text-white"></i>
+                    <div v-if="loading" class="position-absolute d-flex align-items-center justify-content-center h-100 w-100 bg-white top-0" style="left: 0">
+                        <i class="fa fa-spinner fa-spin fa-2x"></i>
                     </div>
                     <label class="form-label">Write a name for storage file</label>
                     <input type="text" class="form-control text-center" v-model="filename">
@@ -1024,8 +1027,8 @@
                     <h1 class="modal-title fs-5">Load saved data</h1>
                 </div>
                 <div class="modal-body position-relative">
-                    <div v-if="loading" class="position-absolute d-flex align-items-center justify-content-center h-100 w-100 bg-opacity-75 bg-dark top-0" style="left: 0">
-                        <i class="fa fa-spinner fa-spin fa-2x text-white"></i>
+                    <div v-if="loading" class="position-absolute d-flex align-items-center justify-content-center h-100 w-100 bg-white top-0" style="left: 0">
+                        <i class="fa fa-spinner fa-spin fa-2x"></i>
                     </div>
                     <button v-if="FileViewType === 'file'" class="btn btn-sm btn-outline-info border-0 mb-3" @click="FileViewType = 'folder';AllFiles = []">
                         <i class="fa fa-arrow-left fa-1-1x align-middle"></i>

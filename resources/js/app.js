@@ -3,7 +3,7 @@ import { createApp } from 'vue/dist/vue.esm-bundler';
 import { ZiggyVue } from 'ziggyVue';
 import { Ziggy } from './ziggy';
 import route from 'ziggy-js'
-import {ref, watch, watchEffect} from 'vue';
+import {ref,  watchEffect} from 'vue';
 import { reactive } from "vue";
 import {useMagicKeys, whenever} from "@vueuse/core";
 import alertify from 'alertifyjs';
@@ -29,7 +29,7 @@ const { shift_d } = useMagicKeys({
 const app = createApp({
     setup: function () {
         return {
-            loading: false,
+            loading: true,
             FileViewType: ref("folder"),
             SavedFiles: ref([]),
             AllFiles: ref([]),
@@ -180,28 +180,28 @@ const app = createApp({
                 },
                 "Mcr_a": {
                     "pre": {
-                        "2": 0,
-                        "5": 0,
-                        "10": 0,
-                        "25": 0,
-                        "50": 0,
-                        "100": 0
+                        "2": 1,
+                        "5": 1,
+                        "10": 1,
+                        "25": 1,
+                        "50": 1,
+                        "100": 1
                     },
                     "post": {
-                        "2": 0,
-                        "5": 0,
-                        "10": 0,
-                        "25": 0,
-                        "50": 0,
-                        "100": 0
+                        "2": 1,
+                        "5": 1,
+                        "10": 1,
+                        "25": 1,
+                        "50": 1,
+                        "100": 1
                     },
                     "allowedScenario": {
-                        "2": 0,
-                        "5": 0,
-                        "10": 0,
-                        "25": 0,
-                        "50": 0,
-                        "100": 0
+                        "2": 1,
+                        "5": 1,
+                        "10": 1,
+                        "25": 1,
+                        "50": 1,
+                        "100": 1
                     }
                 },
                 "Mci_b": {
@@ -512,6 +512,7 @@ const app = createApp({
     },
     mounted() {
         const self = this;
+        self.loading = false;
         window.onload = () => {
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
@@ -583,14 +584,14 @@ const app = createApp({
             self.TablesData.TotalSiteArea.post.impervious = impervious_sum !== 0 ? (impervious_sum / area_sum).toFixed(1) + "%" : 0 + "%";
             self.IdfKeys.forEach(key => {
                 if (!isNaN(parseFloat(self.TablesData.Idf.A[key])) && !isNaN(parseFloat(self.TablesData.Idf.B[key])) && !isNaN(parseFloat(self.TablesData.Idf.D[key]))) {
-                    self.TablesData.Idf.m10[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseFloat(self.TablesData.Idf.m10["hiddenColumn"])), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.m15[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseFloat(self.TablesData.Idf.m15["hiddenColumn"])), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.m30[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseFloat(self.TablesData.Idf.m30["hiddenColumn"])), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.h1[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseFloat(self.TablesData.Idf.h1["hiddenColumn"])), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.h2[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseFloat(self.TablesData.Idf.h2["hiddenColumn"])), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.h6[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseFloat(self.TablesData.Idf.h6["hiddenColumn"])), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.h12[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseFloat(self.TablesData.Idf.h12["hiddenColumn"])), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.h24[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseFloat(self.TablesData.Idf.h24["hiddenColumn"])), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                    self.TablesData.Idf.m10[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 0.17 : 10), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                    self.TablesData.Idf.m15[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 0.25 : 15), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                    self.TablesData.Idf.m30[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 0.5 : 30), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                    self.TablesData.Idf.h1[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 1 : 60), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                    self.TablesData.Idf.h2[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 2 : 120), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                    self.TablesData.Idf.h6[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 6 : 360), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                    self.TablesData.Idf.h12[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 12 : 720), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                    self.TablesData.Idf.h24[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 24 : 1440), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
                 }
                 //PreDevelopment
                 if (!isNaN(parseFloat(self.TablesData.Mcr_a.pre[key])) && !isNaN(parseFloat(self.TablesData.TotalSiteArea.pre.runoff_c)) && !isNaN(parseFloat(self.TablesData.Mci_b.pre[key])))
@@ -799,6 +800,7 @@ const app = createApp({
                                 }
                             }
                         }).catch(function (error) {
+                        self.loading = false;
                         alertify.error(error);
                     });
                     break;
@@ -819,8 +821,11 @@ const app = createApp({
         },
         GetFiles(){
             const self = this;
+            self.loading = true;
+            self.FileViewType = "folder";
             axios.post(route("GetFiles"))
                 .then(function (response) {
+                    self.loading = false;
                     switch (response.data.result){
                         case "success":{
                             self.SavedFiles = response.data.data;
@@ -832,6 +837,7 @@ const app = createApp({
                         }
                     }
                 }).catch(function (error) {
+                self.loading = false;
                 alertify.error(error);
             });
         },
