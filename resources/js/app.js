@@ -584,24 +584,24 @@ const app = createApp({
             self.TablesData.TotalSiteArea.post.impervious = impervious_sum !== 0 ? (impervious_sum / area_sum).toFixed(1) + "%" : 0 + "%";
             self.IdfKeys.forEach(key => {
                 if (!isNaN(parseFloat(self.TablesData.Idf.A[key])) && !isNaN(parseFloat(self.TablesData.Idf.B[key])) && !isNaN(parseFloat(self.TablesData.Idf.D[key]))) {
-                    self.TablesData.Idf.m10[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 0.17 : 10), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.m15[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 0.25 : 15), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.m30[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 0.5 : 30), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.h1[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 1 : 60), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.h2[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 2 : 120), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.h6[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 6 : 360), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.h12[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 12 : 720), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
-                    self.TablesData.Idf.h24[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + parseInt(self.TablesData.timeUnit) === 60 ? 24 : 1440), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                    self.TablesData.Idf.m10[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + (parseInt(self.TablesData.timeUnit) === 60 ? 0.17 : 10)), parseFloat(self.TablesData.Idf.D[key])))).toFixed(2);
+                    self.TablesData.Idf.m15[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + (parseInt(self.TablesData.timeUnit) === 60 ? 0.25 : 15)), parseFloat(self.TablesData.Idf.D[key])))).toFixed(2);
+                    self.TablesData.Idf.m30[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + (parseInt(self.TablesData.timeUnit) === 60 ? 0.5 : 30)), parseFloat(self.TablesData.Idf.D[key])))).toFixed(2);
+                    self.TablesData.Idf.h1[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + (parseInt(self.TablesData.timeUnit) === 60 ? 1 : 60)), parseFloat(self.TablesData.Idf.D[key])))).toFixed(2);
+                    self.TablesData.Idf.h2[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + (parseInt(self.TablesData.timeUnit) === 60 ? 2 : 120)), parseFloat(self.TablesData.Idf.D[key])))).toFixed(2);
+                    self.TablesData.Idf.h6[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + (parseInt(self.TablesData.timeUnit) === 60 ? 6 : 360)), parseFloat(self.TablesData.Idf.D[key])))).toFixed(2);
+                    self.TablesData.Idf.h12[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + (parseInt(self.TablesData.timeUnit) === 60 ? 12 : 720)), parseFloat(self.TablesData.Idf.D[key])))).toFixed(2);
+                    self.TablesData.Idf.h24[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow((parseFloat(self.TablesData.Idf.B[key]) + (parseInt(self.TablesData.timeUnit) === 60 ? 24 : 1440)), parseFloat(self.TablesData.Idf.D[key])))).toFixed(2);
                 }
                 //PreDevelopment
                 if (!isNaN(parseFloat(self.TablesData.Mcr_a.pre[key])) && !isNaN(parseFloat(self.TablesData.TotalSiteArea.pre.runoff_c)) && !isNaN(parseFloat(self.TablesData.Mci_b.pre[key])))
                     self.TablesData.Mc.pre[key] = (parseFloat(self.TablesData.Mcr_a.pre[key]) * parseFloat(self.TablesData.TotalSiteArea.pre.runoff_c) + parseFloat(self.TablesData.Mci_b.pre[key])).toFixed(2);
                 if (self.TablesData.TotalSiteArea.pre.toc > 0) {
                     if (!isNaN(parseFloat(self.TablesData.Idf.A[key])) && !isNaN(parseFloat(self.TablesData.Idf.B[key])) && !isNaN(parseFloat(self.TablesData.TotalSiteArea.pre.toc)) && !isNaN(parseFloat(self.TablesData.Idf.D[key])))
-                        self.TablesData.I.pre[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow(parseFloat(self.TablesData.Idf.B[key]) + (parseFloat(self.TablesData.TotalSiteArea.pre.toc) / parseInt(self.TablesData.timeUnit)), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                        self.TablesData.I.pre[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow(parseFloat(self.TablesData.Idf.B[key]) + (parseFloat(self.TablesData.TotalSiteArea.pre.toc) / parseInt(self.TablesData.timeUnit)), parseFloat(self.TablesData.Idf.D[key])))).toFixed(2);
                 }
                 if (!isNaN(parseFloat(self.TablesData.Mc.pre[key])) && !isNaN(parseFloat(self.TablesData.I.pre[key])) && !isNaN(parseFloat(self.TablesData.TotalSiteArea.pre.area))) {
-                    self.TablesData.Q_l.pre[key] = (2.78 * parseFloat(self.TablesData.Mc.pre[key]) * self.TablesData.I.pre[key] * (self.TablesData.TotalSiteArea.pre.area / 10000).toFixed(2)).toFixed(2);
+                    self.TablesData.Q_l.pre[key] = (2.78 * parseFloat(self.TablesData.Mc.pre[key]) * self.TablesData.I.pre[key] * (self.TablesData.TotalSiteArea.pre.area / 10000)).toFixed(2);
                     self.TablesData.Q_m.pre[key] = (self.TablesData.Q_l.pre[key] / 1000).toFixed(3);
                 }
                 //PostDevelopment
@@ -609,10 +609,10 @@ const app = createApp({
                     self.TablesData.Mc.post[key] = (parseFloat(self.TablesData.Mcr_a.post[key]) * parseFloat(self.TablesData.TotalSiteArea.post.runoff_c) + parseFloat(self.TablesData.Mci_b.post[key])).toFixed(2);
                 if (self.TablesData.TotalSiteArea.post.toc > 0) {
                     if (!isNaN(parseFloat(self.TablesData.Idf.A[key])) && !isNaN(parseFloat(self.TablesData.Idf.B[key])) && !isNaN(parseFloat(self.TablesData.TotalSiteArea.post.toc)) && !isNaN(parseFloat(self.TablesData.Idf.D[key])))
-                        self.TablesData.I.post[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow(parseFloat(self.TablesData.Idf.B[key]) + (parseFloat(self.TablesData.TotalSiteArea.post.toc) / parseInt(self.TablesData.timeUnit)), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                        self.TablesData.I.post[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow(parseFloat(self.TablesData.Idf.B[key]) + (parseFloat(self.TablesData.TotalSiteArea.post.toc) / parseInt(self.TablesData.timeUnit)), parseFloat(self.TablesData.Idf.D[key])))).toFixed(2);
                 }
                 if (!isNaN(parseFloat(self.TablesData.Mc.post[key])) && !isNaN(parseFloat(self.TablesData.I.post[key])) && !isNaN(parseFloat(self.TablesData.TotalSiteArea.post.area))) {
-                    self.TablesData.Q_l.post[key] = (2.78 * parseFloat(self.TablesData.Mc.post[key]) * self.TablesData.I.post[key] * (self.TablesData.TotalSiteArea.post.area / 10000).toFixed(2)).toFixed(2);
+                    self.TablesData.Q_l.post[key] = (2.78 * parseFloat(self.TablesData.Mc.post[key]) * self.TablesData.I.post[key] * (self.TablesData.TotalSiteArea.post.area / 10000)).toFixed(2);
                     self.TablesData.Q_m.post[key] = (self.TablesData.Q_l.post[key] / 1000).toFixed(3);
                 }
                 //AllowedScenario
@@ -621,7 +621,7 @@ const app = createApp({
                         self.TablesData.Mc.allowedScenario[key] = (parseFloat(self.TablesData.Mcr_a.allowedScenario[key]) * parseFloat(self.TablesData.TotalSiteArea.allowedScenario.runoff_c) + parseFloat(self.TablesData.Mci_b.allowedScenario[key])).toFixed(2);
                     if (self.TablesData.TotalSiteArea.allowedScenario.toc > 0) {
                         if (!isNaN(parseFloat(self.TablesData.Idf.A[key])) && !isNaN(parseFloat(self.TablesData.Idf.B[key])) && !isNaN(parseFloat(self.TablesData.TotalSiteArea.allowedScenario.toc)) && !isNaN(parseFloat(self.TablesData.Idf.D[key])))
-                            self.TablesData.I.allowedScenario[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow(parseFloat(self.TablesData.Idf.B[key]) + (parseFloat(self.TablesData.TotalSiteArea.allowedScenario.toc) / parseInt(self.TablesData.timeUnit)), parseFloat(self.TablesData.Idf.D[key]))).toFixed(2)).toFixed(2);
+                            self.TablesData.I.allowedScenario[key] = (parseFloat(self.TablesData.Idf.A[key]) * (Math.pow(parseFloat(self.TablesData.Idf.B[key]) + (parseFloat(self.TablesData.TotalSiteArea.allowedScenario.toc) / parseInt(self.TablesData.timeUnit)), parseFloat(self.TablesData.Idf.D[key])))).toFixed(2);
                     }
                     if (!isNaN(parseFloat(self.TablesData.Mc.allowedScenario[key])) && !isNaN(parseFloat(self.TablesData.I.allowedScenario[key])) && !isNaN(parseFloat(self.TablesData.TotalSiteArea.allowedScenario.area))) {
                         self.TablesData.Q_l.allowedScenario[key] = (2.78 * parseFloat(self.TablesData.Mc.allowedScenario[key]) * self.TablesData.I.allowedScenario[key] * (self.TablesData.TotalSiteArea.allowedScenario.area)).toFixed(2);
@@ -631,8 +631,8 @@ const app = createApp({
             });
             self.StorageCalcKeys.forEach(key => {
                 if (!isNaN(parseFloat(self.TablesData.Idf.A[self.TablesData.Drp])) && !isNaN(parseFloat(self.TablesData.Idf.B[self.TablesData.Drp]) && !isNaN(parseFloat(self.TablesData.StorageTable[key].T) && !isNaN(parseFloat(self.TablesData.Idf.D[self.TablesData.Drp])) && !isNaN(parseFloat(self.TablesData.Mi_r)) && !isNaN(parseFloat(self.TablesData.Toc))))){
-                    self.TablesData.StorageTable[key].I = (parseFloat(self.TablesData.Idf.A[self.TablesData.Drp]) * (Math.pow((parseFloat(self.TablesData.Idf.B[self.TablesData.Drp]) + (parseFloat(self.TablesData.StorageTable[key].T) / parseInt(self.TablesData.timeUnit))), parseFloat(self.TablesData.Idf.D[self.TablesData.Drp]))).toFixed(1)).toFixed(1);
-                    self.TablesData.StorageTable[key].Ix = ((parseFloat(self.TablesData.Idf.A[self.TablesData.Drp]) * (Math.pow((parseFloat(self.TablesData.StorageTable[key].T) / parseInt(self.TablesData.timeUnit)), parseFloat(self.TablesData.Idf.D[self.TablesData.Drp])))).toFixed(2) * parseFloat(self.TablesData.Mi_r)).toFixed(1);
+                    self.TablesData.StorageTable[key].I = (parseFloat(self.TablesData.Idf.A[self.TablesData.Drp]) * (Math.pow((parseFloat(self.TablesData.Idf.B[self.TablesData.Drp]) + (parseFloat(self.TablesData.StorageTable[key].T) / parseInt(self.TablesData.timeUnit))), parseFloat(self.TablesData.Idf.D[self.TablesData.Drp])))).toFixed(1);
+                    self.TablesData.StorageTable[key].Ix = ((parseFloat(self.TablesData.Idf.A[self.TablesData.Drp]) * (Math.pow((parseFloat(self.TablesData.StorageTable[key].T) / parseInt(self.TablesData.timeUnit)), parseFloat(self.TablesData.Idf.D[self.TablesData.Drp])))) * parseFloat(self.TablesData.Mi_r)).toFixed(1);
                     self.TablesData.StorageTable[key].Pdq = ((parseFloat(self.TablesData.StorageTable[key].Ix) * parseFloat(self.TablesData.Pd_c) * parseFloat(self.TablesData.Area)) * (1 / 360)).toFixed(3);
                     self.TablesData.StorageTable[key].TraAv = (((parseFloat(self.TablesData.StorageTable[key].T) - parseFloat(self.TablesData.Toc)) + (parseFloat(self.TablesData.StorageTable[key].T) + parseFloat(self.TablesData.Toc))) * 0.5 * parseFloat(self.TablesData.StorageTable[key].Pdq) * parseInt(self.TablesData.timeUnit)).toFixed(1);
                     self.TablesData.StorageTable[key].TriAv = (0.5 * (parseFloat(self.TablesData.StorageTable[key].T) + parseFloat(self.TablesData.Toc)) * parseInt(self.TablesData.timeUnit) * parseFloat(self.TablesData.Maq)).toFixed(0);
